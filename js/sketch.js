@@ -1,11 +1,34 @@
+var r, g, b, fillColour;
+
 function setup() {
-    var canvas = createCanvas(800, 800);
-    canvas.parent("p5container");
+    createCanvas(displayWidth,displayHeight,SVG);
 }
 
 function draw() {
     background(220);
+    if (mouseIsPressed === true) {
+     fill(randColor());   
+    }
+    ellipse(800, 800, r*2/g*b);
 
-    fill(255, 255, 255);
-    ellipse(400, 400, 200);
+    if (mouseIsPressed === true) {
+        fill(randColor());   
+       }
+       rectMode(CENTER);
+       rect(800, 800, b*100/r);
 }
+
+function randColor(){
+    r = Math.floor(random(255));
+    g = Math.floor(random(255));
+    b = Math.floor(random(255));
+    
+    fillColor = color(r, g, b);
+    
+    return fillColor;
+  }
+
+  function keyPressed() {
+      print("Saved")
+      save("mySVG.svg");
+  }
